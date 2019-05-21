@@ -1,35 +1,4 @@
 ---
-  - name: Enable necessary repos
-    hosts: all
-    tasks:
-      - name: Enable rhel-7-server-insights-3-rpms
-        command: subscription-manager repos --enable=rhel-7-server-insights-3-rpms
-      - name: Enable rhel-7-server-satellite-tools-6.5-rpms
-        command: subscription-manager repos --enable=rhel-7-server-satellite-tools-6.5-rpms
-
-  - name: Install the latest version of insights-client
-    hosts: all
-    tasks:
-      - name: Install the latest version of insights-client
-        yum:
-          name: insights-client
-          state: latest
-
-  - name: Insights Client Registration
-    hosts: all
-    tasks:
-      - name: insights-client registration
-        command: /usr/bin/insights-client --register
-
-  - name: Install Katello Agent
-    hosts: all
-    tasks:
-      - name: Install the latest version of Katello Agent
-        yum:
-          name: katello-agent
-          state: latest
-
-  - name: Start service goferd, if not started
-    service:
-      name: goferd
-      state: started
+- hosts: all
+  roles:
+  - { role: RedHatInsights.insights-client, when: ansible_os_family == 'RedHat' }
