@@ -4,8 +4,8 @@
     tasks:
       - name: Enable rhel-7-server-insights-3-rpms
         command: subscription-manager repos --enable=rhel-7-server-insights-3-rpms
-      - name: Enable rhel-7-server-satellite-tools-6.4-rpms
-        command: subscription-manager repos --enable=rhel-7-server-satellite-tools-6.4-rpms
+      - name: Enable rhel-7-server-satellite-tools-6.5-rpms
+        command: subscription-manager repos --enable=rhel-7-server-satellite-tools-6.5-rpms
 
   - name: Install the latest version of insights-client
     hosts: all
